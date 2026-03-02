@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grok 4.20 Ultimate Mastery Guide - Hướng dẫn Toàn diện</title>
+    <meta name="description"
+        content="Cẩm nang khai thác tối đa Grok 4.20 Beta - Hệ thống 4 Agents (Grok, Harper, Benjamin, Lucas), Custom Instructions, và nghệ thuật prompt engineering AI thế hệ mới. Cập nhật tháng 3/2026.">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            900: '#134e4a',
+                        },
+                        grok: {
+                            dark: '#0f172a',
+                            light: '#1e293b',
+                            accent: '#3b82f6',
+                            gradient_start: '#2563eb',
+                            gradient_end: '#8b5cf6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Dark Mode Config -->
+    <script>
+        // Check for saved preference or system preference
+        if (localStorage.getItem('darkMode') === 'true' ||
+            (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f8fafc;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .prose-custom h2 {
+            color: #0f172a;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            font-size: 1.875rem;
+            letter-spacing: -0.025em;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .prose-custom h3 {
+            color: #1e293b;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        .prose-custom p {
+            margin-bottom: 1rem;
+            color: #475569;
+            line-height: 1.7;
+        }
+
+        .prose-custom ul {
+            list-style-type: none;
+            margin-bottom: 1.25rem;
+        }
+
+        .prose-custom ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .prose-custom ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+            font-size: 1.25rem;
+            line-height: 1.2;
+        }
+
+        .prose-custom strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .prose-custom code {
+            background-color: #1e293b;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.375rem;
+            font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 0.875em;
+            color: #f9a8d4;
+            border: 1px solid #334155;
+        }
+
+        /* Respect prefers-reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+
+            .animate-bounce,
+            .animate-ping {
+                animation: none !important;
+            }
+
+            * {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
+
+        /* Table Styles */
+        .premium-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+
+        .premium-table th {
+            background-color: #f8fafc;
+            text-align: left;
+            padding: 1rem;
+            font-weight: 600;
+            color: #475569;
+            border-bottom: 1px solid #e2e8f0;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+
+        .premium-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            color: #334155;
+            font-size: 0.875rem;
+        }
+
+        .premium-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .premium-table tr:hover td {
+            background-color: #f1f5f9;
+            transition: background-color 0.2s ease;
+        }
+
+        .nav-link.active {
+            color: #2563eb;
+            font-weight: 600;
+            background-color: #eff6ff;
+            border-left: 3px solid #2563eb;
+            padding-left: 0.75rem;
+        }
+
+        .nav-link {
+            border-left: 3px solid transparent;
+            padding-left: 0.75rem;
+            transition: all 0.2s;
+            outline: none;
+        }
+
+        .nav-link:focus-visible {
+            box-shadow: 0 0 0 2px #2563eb;
+            border-radius: 0.5rem;
+        }
+
+        /* ========== DARK MODE ========== */
+        .dark body,
+        html.dark body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+
+        html.dark .glass-nav {
+            background: rgba(15, 23, 42, 0.9);
+            border-bottom: 1px solid rgba(51, 65, 85, 0.6);
+        }
+
+        html.dark .prose-custom h2 {
+            color: #f1f5f9;
+            border-bottom-color: #334155;
+        }
+
+        html.dark .prose-custom h3 {
+            color: #e2e8f0;
+        }
+
+        html.dark .prose-custom p {
+            color: #cbd5e1;
+        }
+
+        html.dark .prose-custom ul li {
+            color: #cbd5e1;
+        }
+
+        html.dark .prose-custom strong {
+            color: #f1f5f9;
+        }
+
+        html.dark .prose-custom code {
+            background-color: #0f172a;
+            color: #f9a8d4;
+            border-color: #475569;
+        }
+
+        /* Dark Mode — Cards & Backgrounds */
+        html.dark .bg-white {
+            background-color: #1e293b !important;
+        }
+
+        html.dark .bg-slate-50,
+        html.dark .bg-slate-100 {
+            background-color: #0f172a !important;
+        }
+
+        html.dark .bg-blue-50 {
+            background-color: rgba(30, 58, 138, 0.3) !important;
+            border-color: #1e3a8a !important;
+            color: #93c5fd !important;
+        }
+
+        html.dark .bg-indigo-50 {
+            background-color: rgba(49, 46, 129, 0.3) !important;
+            border-color: #312e81 !important;
+        }
+
+        html.dark .bg-emerald-50 {
+            background-color: rgba(6, 78, 59, 0.3) !important;
+            border-color: #064e3b !important;
+        }
+
+        html.dark .bg-rose-50 {
+            background-color: rgba(136, 19, 55, 0.3) !important;
+            border-color: #881337 !important;
+        }
+
+        /* Dark Mode — Table */
+        html.dark .premium-table {
+            border-color: #334155;
+        }
+
+        html.dark .premium-table th {
+            background-color: #1e293b;
+            color: #94a3b8;
+            border-bottom-color: #334155;
+        }
+
+        html.dark .premium-table td {
+            color: #cbd5e1;
+            border-bottom-color: #1e293b;
+        }
+
+        html.dark .premium-table tr:hover td {
+            background-color: #1e293b;
+        }
+
+        /* Dark Mode — Sidebar */
+        html.dark .nav-link {
+            color: #94a3b8;
+        }
+
+        html.dark .nav-link:hover {
+            color: #60a5fa;
+            background-color: rgba(30, 58, 138, 0.2);
+        }
+
+        html.dark .nav-link.active {
+            color: #60a5fa;
+            background-color: rgba(30, 58, 138, 0.3);
+            border-left-color: #3b82f6;
+        }
+
+        /* Dark Mode — Borders */
+        html.dark .border-slate-200,
+        html.dark .border {
+            border-color: #334155 !important;
+        }
+
+        /* Dark Mode — Text overrides */
+        html.dark .text-slate-900,
+        html.dark .text-slate-800,
+        html.dark .text-slate-700 {
+            color: #e2e8f0 !important;
+        }
+
+        html.dark .text-slate-600,
+        html.dark .text-slate-500 {
+            color: #94a3b8 !important;
+        }
+
+        html.dark .text-slate-400 {
+            color: #64748b !important;
+        }
+
+        /* Dark Mode — Agent Cards */
+        html.dark .bg-blue-50\/50,
+        html.dark .bg-emerald-50\/50,
+        html.dark .bg-amber-50\/50,
+        html.dark .bg-pink-50\/50 {
+            background-color: rgba(30, 41, 59, 0.5) !important;
+        }
+
+        /* Dark Mode — Shadow */
+        html.dark .shadow-sm,
+        html.dark .shadow-md {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        /* Dark Mode — Red Alert Box (Section 7) */
+        html.dark .bg-red-50\/80 {
+            background-color: rgba(127, 29, 29, 0.35) !important;
+            border-color: #991b1b !important;
+        }
+
+        html.dark .text-red-900 {
+            color: #fca5a5 !important;
+        }
+
+        html.dark .text-red-800 {
+            color: #fecaca !important;
+        }
+
+        html.dark .text-red-600 {
+            color: #f87171 !important;
+        }
+
+        html.dark .border-red-200 {
+            border-color: #7f1d1d !important;
+        }
+
+        html.dark .bg-red-500\/10 {
+            background-color: rgba(239, 68, 68, 0.15) !important;
+        }
+
+        /* Dark Mode — Colored Text (indigo, emerald, blue, etc.) */
+        html.dark .text-indigo-900 {
+            color: #c7d2fe !important;
+        }
+
+        html.dark .text-indigo-700 {
+            color: #a5b4fc !important;
+        }
+
+        html.dark .text-emerald-900 {
+            color: #a7f3d0 !important;
+        }
+
+        html.dark .text-emerald-700 {
+            color: #6ee7b7 !important;
+        }
+
+        html.dark .text-blue-700 {
+            color: #93c5fd !important;
+        }
+
+        html.dark .text-purple-700 {
+            color: #c4b5fd !important;
+        }
+
+        html.dark .text-rose-700 {
+            color: #fda4af !important;
+        }
+
+        /* Dark Mode — Case Study Cards bg colors */
+        html.dark .bg-blue-100 {
+            background-color: rgba(30, 58, 138, 0.4) !important;
+        }
+
+        html.dark .bg-purple-100 {
+            background-color: rgba(88, 28, 135, 0.4) !important;
+        }
+
+        html.dark .bg-rose-100 {
+            background-color: rgba(136, 19, 55, 0.4) !important;
+        }
+
+        /* Dark Mode — Inline code blocks in colored sections */
+        html.dark .bg-indigo-100\/50 {
+            background-color: rgba(49, 46, 129, 0.4) !important;
+        }
+
+        html.dark .bg-emerald-100\/50 {
+            background-color: rgba(6, 78, 59, 0.4) !important;
+        }
+
+        html.dark .bg-slate-50 code,
+        html.dark code.bg-slate-50 {
+            background-color: #1e293b !important;
+        }
+
+        /* Dark Mode — Scrollbar */
+        html.dark ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        html.dark ::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+
+        html.dark ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+
+        /* Dark Mode Toggle Button */
+        .dark-toggle {
+            position: relative;
+            width: 48px;
+            height: 26px;
+            border-radius: 9999px;
+            background: #e2e8f0;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            padding: 3px;
+        }
+
+        html.dark .dark-toggle {
+            background: #3b82f6;
+        }
+
+        .dark-toggle-knob {
+            width: 20px;
+            height: 20px;
+            border-radius: 9999px;
+            background: white;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        html.dark .dark-toggle-knob {
+            transform: translateX(22px);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- Header / Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div
+                        class="w-9 h-9 rounded-lg bg-gradient-to-br from-grok-gradient_start to-grok-gradient_end flex items-center justify-center text-white font-bold text-xl shadow-md">
+                        G</div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900 hidden sm:block">Grok 4.20 <span
+                            class="text-blue-600">Beta</span></span>
+                </div>
+                <!-- Author Attribution -->
+                <div class="flex items-center gap-4">
+                    <!-- Dark Mode Toggle -->
+                    <button onclick="toggleDarkMode()" class="dark-toggle" aria-label="Toggle Dark Mode"
+                        title="Dark / Light Mode">
+                        <div class="dark-toggle-knob">🌙</div>
+                    </button>
+                    <span class="text-sm font-medium text-slate-500 hidden md:block">Brought to you by</span>
+                    <a href="https://www.facebook.com/dotanminh" target="_blank" rel="noopener noreferrer"
+                        class="group flex items-center gap-2 px-4 py-1.5 rounded-full bg-white hover:bg-blue-50 hover:text-blue-600 transition-all shadow-sm border border-slate-200 hover:border-blue-300">
+                        <img src="https://ui-avatars.com/api/?name=Minh+Do&background=2563eb&color=fff&rounded=true"
+                            alt="Minh Đỗ" class="w-6 h-6 rounded-full border border-blue-200">
+                        <span
+                            class="font-semibold text-sm text-slate-700 group-hover:text-blue-600 transition-colors">Minh
+                            Đỗ</span>
+                        <i class="fa-brands fa-facebook text-blue-600 group-hover:scale-110 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-grok-dark">
+        <!-- Background Effects -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div
+                class="absolute -top-[25%] -right-[10%] w-[70%] h-[70%] rounded-full bg-grok-gradient_start/20 blur-[100px]">
+            </div>
+            <div
+                class="absolute -bottom-[20%] -left-[10%] w-[60%] h-[60%] rounded-full bg-grok-gradient_end/20 blur-[100px]">
+            </div>
+            <!-- Subtle Grid -->
+            <div
+                class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmurlCtncmlkKSIvPjwvc3ZnPg==')] opacity-30">
+            </div>
+        </div>
+
+        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/10 text-blue-300 text-xs font-semibold mb-6 backdrop-blur-md uppercase tracking-wide">
+                <span class="relative flex h-2 w-2">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                </span>
+                Cập nhật mới nhất 2026
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white tracking-tight mb-6 leading-[1.1]">
+                Grok 4.20 <br class="md:hidden" />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Ultimate
+                    Mastery Guide</span>
+            </h1>
+            <p class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-slate-300 font-light leading-relaxed">
+                Hướng dẫn Toàn diện & Mở rộng. Khai phá sức mạnh lõi của hệ thống <strong
+                    class="text-white font-semibold">4 Agents</strong> và nghệ thuật điều khiển AI thế hệ mới.
+            </p>
+            <div class="mt-10 flex cursor-pointer justify-center"
+                onclick="document.getElementById('content-start').scrollIntoView({behavior: 'smooth'})">
+                <div
+                    class="animate-bounce p-2 bg-white/10 rounded-full border border-white/20 hover:bg-white/20 transition-colors">
+                    <i class="fa-solid fa-arrow-down text-white"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div id="content-start" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row gap-12">
+
+        <!-- Sidebar Navigation (Sticky) -->
+        <aside class="w-full lg:w-1/4 flex-shrink-0 order-2 lg:order-1 hidden md:block">
+            <div class="sticky top-24">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 px-3">Mục Lục (Table of
+                    Contents)</h3>
+                <nav class="flex flex-col space-y-1">
+                    <a href="#section-1"
+                        class="nav-link block px-3 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-slate-100 rounded-lg">1.
+                        Executive Summary & Scope</a>
+                    <a href="#section-2"
+                        class="nav-link block px-3 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-slate-100 rounded-lg">2.
+                        Deep Dive & Architecture</a>
+                    <a href="#section-3"
+                        class="nav-link block px-3 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-slate-100 rounded-lg">3.
+                        Setup Custom Instructions</a>
+                    <a href="#section-4"
+                        class="nav-link block px-3 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-slate-100 rounded-lg">4.
+                        Thư viện Ứng dụng Thực chiến</a>
+                    <a href="#section-5"
+                        class="nav-link block px-3 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-slate-100 rounded-lg">5.
+                        Top 5 "Thần Chú" (Cheat Sheet)</a>
+                    <a href="#section-6"
+                        class="nav-link block px-3 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-slate-100 rounded-lg">6.
+                        Tối ưu hóa &amp; Cạm bẫy</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Document Content -->
+        <main class="w-full lg:w-3/4 order-1 lg:order-2">
+
+            <div class="bg-blue-50 border border-blue-100 rounded-xl p-5 mb-10 text-blue-800 text-sm italic shadow-sm">
+                <strong style="color: #d97706; font-style: normal;">Lời tựa:</strong> Tài liệu này đã được biên soạn kỹ
+                lưỡng với mong muốn phát huy tối đa sức mạnh của phiên bản <strong>Grok 4.20 (Beta)</strong>. Tuy nhiên,
+                sẽ không tránh khỏi một số sai sót trong quá trình biên soạn - rất mong nhận được góp ý từ cộng đồng.
+            </div>
+
+            <article class="prose-custom max-w-none">
+
+                <!-- SECTION 1 -->
+                <section id="section-1" class="scroll-mt-24 mb-16">
+                    <h2>1. Executive Summary & Product Scope</h2>
+                    <p><strong>Mục tiêu:</strong> Xây dựng hướng dẫn khai thác tối đa Grok 4.20 (Beta) bằng cách loại bỏ
+                        các giả định sai lầm về tính năng không có sẵn, tập trung vào kiến trúc lõi <strong>4 Agents (4
+                            Đặc vụ phối hợp)</strong> và <strong>Custom Instructions (Chỉ thị tùy chỉnh)</strong>.</p>
+
+                    <div class="grid md:grid-cols-2 gap-6 mt-6">
+                        <!-- In Scope -->
+                        <div
+                            class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                            <h3 class="flex items-center text-teal-600 mt-0"><i
+                                    class="fa-solid fa-circle-check mr-2"></i> 1.1 In-Scope (Thuộc bản Beta)</h3>
+                            <ul class="text-sm mt-4">
+                                <li><strong>Kiến trúc 4 Agents:</strong> Phối hợp chạy song song (Grok, Harper,
+                                    Benjamin, Lucas).</li>
+                                <li><strong>Custom Instructions:</strong> Thiết lập quy tắc, bộ nhớ tĩnh, upload file.
+                                </li>
+                                <li><strong>Context Window (Sức đọc):</strong> Kế thừa 2 Triệu tokens từ bản 4.1 Fast.
+                                    <ul class="mt-2 ml-4">
+                                        <li><strong>Base Mode:</strong> 256K tokens (Tối ưu tốc độ).</li>
+                                        <li><strong>Agentic Mode:</strong> 2 Triệu tokens (Thực thi siêu lớn).</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Out of Scope -->
+                        <div
+                            class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                            <h3 class="flex items-center text-rose-500 mt-0"><i
+                                    class="fa-solid fa-circle-xmark mr-2"></i> 1.2 Out-of-Scope (Ngoại vi)</h3>
+                            <ul class="text-sm mt-4">
+                                <li><strong>DeepSearch & Think Mode:</strong> Dành cho SuperGrok ($30/tháng), ngoài
+                                    scope kiến trúc lõi.</li>
+                                <li><strong>Heavy Mode (16 Agents):</strong> Thuộc gói SuperGrok Heavy ($300/tháng).
+                                </li>
+                                <li><strong>Fast Mode / Expert Mode:</strong> Không thuộc luồng 4 Agents.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 2 -->
+                <section id="section-2" class="scroll-mt-24 mb-16">
+                    <h2>2. Grok 4.20 Deep Dive & Architecture</h2>
+
+                    <h3>Hệ thống Cộng tác Đa Đặc vụ (4 Core Agents System)</h3>
+                    <p>Trong Grok 4.20 (phiên bản Beta từ 17/02/2026), hệ thống tự động kích hoạt cả 4 Agent song song
+                        (parallel) cho mọi prompt. Tuy nhiên, để khai thác tối đa một Agent cụ thể, bạn cần gọi tên trực
+                        tiếp trong prompt (Ví dụ: "Lucas, hãy..."). Dưới đây là 4 hạt nhân cốt lõi:</p>
+                    <div class="grid grid-cols-1 gap-4 my-6">
+                        <div class="bg-white p-4 rounded-lg border border-slate-200 flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 text-blue-600 mt-1">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+                            <div><strong class="text-blue-900 block text-lg mb-1">Grok (Captain / Leader /
+                                    Coordinator)</strong>Điều phối toàn bộ, tổng hợp câu trả lời cuối, giải quyết xung
+                                đột ý kiến, giữ tính chân thực và hài hước.</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-slate-200 flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 text-emerald-600 mt-1">
+                                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                            </div>
+                            <div><strong class="text-emerald-900 block text-lg mb-1">Harper (Research & Facts
+                                    Expert)</strong>Chuyên gia tìm kiếm, fact-check (kiểm chứng) real-time qua dữ liệu
+                                mạng X, xây dựng cốt truyện (narrative building).</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-slate-200 flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0 text-purple-600 mt-1">
+                                <i class="fa-solid fa-gears"></i>
+                            </div>
+                            <div><strong class="text-purple-900 block text-lg mb-1">Benjamin (Logic / Math / Code
+                                    Expert)</strong>Cỗ máy logic, toán học, phân tích finance/economics, kiểm tra lỗi
+                                code, và lập luận tư duy từng bước step-by-step.</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-slate-200 flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0 text-orange-600 mt-1">
+                                <i class="fa-solid fa-lightbulb"></i>
+                            </div>
+                            <div class="w-full">
+                                <strong class="text-orange-900 block text-lg mb-2">Lucas (Creativity &
+                                    Critique)</strong>
+                                <p class="text-sm text-slate-600 mb-2 font-medium">Chuyên gia sáng tạo, tập trung sâu
+                                    vào:</p>
+                                <ul class="text-sm space-y-1 mb-0 mt-0"
+                                    style="list-style-type: none; padding-left: 1.5rem;">
+                                    <li style="position: relative; padding-left: 0;"><span
+                                            style="position: absolute; left: -1.25rem; color: #f97316; font-weight: bold;">•</span><strong>Divergent
+                                            thinking:</strong> Nghĩ ngược, nghĩ "điên", nghĩ ngoài hộp (out-of-the-box),
+                                        wild ideas.</li>
+                                    <li style="position: relative; padding-left: 0;"><span
+                                            style="position: absolute; left: -1.25rem; color: #f97316; font-weight: bold;">•</span><strong>Alternative
+                                            framings & creative concepts:</strong> Đưa ra nhiều góc nhìn hoàn toàn khác
+                                        biệt, concept cực lạ.</li>
+                                    <li style="position: relative; padding-left: 0;"><span
+                                            style="position: absolute; left: -1.25rem; color: #f97316; font-weight: bold;">•</span><strong>User
+                                            experience (UX) optimization:</strong> Làm cho UX không chỉ dùng được mà còn
+                                        "thích mê" (delight user).</li>
+                                    <li style="position: relative; padding-left: 0;"><span
+                                            style="position: absolute; left: -1.25rem; color: #f97316; font-weight: bold;">•</span><strong>Writing/visual
+                                            balance & readability:</strong> Cân bằng chữ + hình, đẹp mắt, dễ đọc, mang
+                                        "wow factor".</li>
+                                    <li style="position: relative; padding-left: 0;"><span
+                                            style="position: absolute; left: -1.25rem; color: #f97316; font-weight: bold;">•</span><strong>Creative
+                                            UI/Interface design:</strong> Thiết kế giao diện sáng tạo, đẹp, hiện đại.
+                                    </li>
+                                    <li style="position: relative; padding-left: 0;"><span
+                                            style="position: absolute; left: -1.25rem; color: #f97316; font-weight: bold;">•</span><strong>Visual
+                                            storytelling:</strong> Kể chuyện bằng hình ảnh, layout, animation,
+                                        micro-interaction.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-10">Sức mạnh "War Room" của 16 Agents trong Grok 4.20 Heavy Mode</h3>
+                    <p>Với model Heavy ($300/tháng), hệ thống không phải là 16 model riêng biệt, mà là 16 chuyên gia
+                        (specialized instances) cùng chia sẻ trọng số MoE (~3T params). Khi nhận 1 prompt, chúng chạy
+                        parallel (song song), debate, cross-check, fact-check lẫn nhau (có thể đến 5-7 vòng) giống như
+                        một "war room" trước khi Grok đưa ra câu trả lời cuối cùng.</p>
+                    <p>Ngoài 4 Core Agents trên, Heavy Mode kích hoạt thêm 12 Specialized Agents:</p>
+
+                    <div class="overflow-x-auto mt-4 mb-10">
+                        <table class="premium-table text-sm">
+                            <thead>
+                                <tr>
+                                    <th class="w-12 text-center">STT</th>
+                                    <th class="w-32">Agent</th>
+                                    <th>Vai trò chính</th>
+                                    <th>Chuyên môn nổi bật</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center font-medium">5</td>
+                                    <td class="font-bold text-pink-600">Olivia</td>
+                                    <td class="font-medium text-slate-700">Arts & Humanities</td>
+                                    <td>Văn học, nghệ thuật, văn hóa, viết truyện, content sáng tạo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center font-medium">6</td>
+                                    <td class="font-bold text-amber-700">James</td>
+                                    <td class="font-medium text-slate-700">Historical & Philosophical Analysis</td>
+                                    <td>Lịch sử, triết học, chính trị, đạo đức.</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center font-medium">7</td>
+                                    <td class="font-bold text-indigo-600">Charlotte</td>
+                                    <td class="font-medium text-slate-700">Advanced Math & Strategy</td>
+                                    <td>Toán cao cấp, thống kê, logic chiến lược kinh doanh.</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center font-medium">8</td>
+                                    <td class="font-bold text-slate-800">Henry</td>
+                                    <td class="font-medium text-slate-700">Engineering & Optimization</td>
+                                    <td>Kỹ thuật hệ thống, robotics, tối ưu quy trình.</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center font-medium">9</td>
+                                    <td class="font-bold text-teal-600">Mia</td>
+                                    <td class="font-medium text-slate-700">Biomedical & Life Sciences</td>
+                                    <td>Sinh học, y sinh, thuốc men, sức khỏe.</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center font-medium">10</td>
+                                    <td class="font-bold text-blue-800">William</td>
+                                    <td class="font-medium text-slate-700">Business & Entrepreneurship</td>
+                                    <td>Chiến lược kinh doanh, startup, phân tích thị trường.</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center font-medium">11</td>
+                                    <td class="font-bold text-cyan-600">Sebastian</td>
+                                    <td class="font-medium text-slate-700">Hard Sciences</td>
+                                    <td>Vật lý lượng tử, thiên văn, mô hình khoa học cứng.</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center font-medium">12</td>
+                                    <td class="font-bold text-purple-800">Jack</td>
+                                    <td class="font-medium text-slate-700">Psychology & Behavior</td>
+                                    <td>Tâm lý học, phân tích hành vi người dùng.</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center font-medium">13</td>
+                                    <td class="font-bold text-green-700">Owen</td>
+                                    <td class="font-medium text-slate-700">Environmental Systems</td>
+                                    <td>Môi trường, biến đổi khí hậu, tính bền vững, chính sách xanh.</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center font-medium">14</td>
+                                    <td class="font-bold text-fuchsia-600">Luna</td>
+                                    <td class="font-medium text-slate-700">Exploration & Futurism</td>
+                                    <td>Khám phá không gian, xu hướng vũ trụ và tương lai.</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center font-medium">15</td>
+                                    <td class="font-bold text-rose-600">Elizabeth</td>
+                                    <td class="font-medium text-slate-700">Ethics & Critical Thinking</td>
+                                    <td>Đạo đức AI, chính sách, góc nhìn nhân văn phân tích.</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center font-medium">16</td>
+                                    <td class="font-bold text-sky-700">Noah</td>
+                                    <td class="font-medium text-slate-700">Long-term Systems Thinking</td>
+                                    <td>Tư duy hệ thống dài hạn, chiến lược đổi mới phức tạp.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Cơ chế Context Window (Sức đọc linh hoạt)</h3>
+                    <p>Phiên bản Grok 4.20 kế thừa hoàn toàn Base Engine từ <strong>Grok 4.1 Fast</strong>:</p>
+                    <ul>
+                        <li><strong>Base Mode (256K Tokens):</strong> Giới hạn đọc ở mức 256K để đảm bảo Fast Inference.
+                        </li>
+                        <li><strong>Agentic Mode (2M Tokens):</strong> Mở băng thông khóa max 2 triệu tokens. 4 Agents
+                            sẽ đọc, phân tích chéo đống tư liệu khổng lồ (vd: nguyên bộ mã nguồn) mà không sợ vượt giới
+                            hạn trí nhớ.</li>
+                    </ul>
+                    <div
+                        class="bg-slate-800 rounded-lg p-4 my-6 flex items-center gap-4 shadow-lg border-l-4 border-blue-500">
+                        <i class="fa-solid fa-bolt text-yellow-400 text-2xl"></i>
+                        <p class="mb-0 text-sm" style="color: #fde68a;"><strong style="color: #fbbf24;">Lợi ích tối
+                                thượng:</strong>
+                            Tranh luận nội bộ giúp giảm thiểu
+                            <strong style="color: #fbbf24;">65% tỷ lệ Hallucination (Ảo giác)</strong> (từ 12% xuống
+                            ~4.2%).
+                        </p>
+                    </div>
+
+                    <h3 class="mt-10">Bảng So sánh (Cập nhật Tháng 3/2026)</h3>
+                    <p class="text-sm italic text-slate-500">*So sánh các Flagship Models mạnh nhất hiện hành.</p>
+
+                    <div class="overflow-x-auto">
+                        <table class="premium-table">
+                            <thead>
+                                <tr>
+                                    <th>Model (Mô hình)</th>
+                                    <th>System Architecture</th>
+                                    <th>Context Window (Input)</th>
+                                    <th>Output Limit (Viết)</th>
+                                    <th>Điểm nhấn Đặc Biệt</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-bold text-blue-700">Grok 4.20 Beta</td>
+                                    <td><i class="fa-solid fa-trophy text-yellow-500 mr-1"></i> Multi-Agent</td>
+                                    <td class="font-bold text-emerald-600"><i
+                                            class="fa-solid fa-trophy text-yellow-500 mr-1"></i> 2 Triệu Tokens</td>
+                                    <td><strong>8K Tokens/Lượt*</strong></td>
+                                    <td>Giảm 65% ảo giác, Data Real-time từ X</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-semibold text-slate-700">Grok 4.1 Fast</td>
+                                    <td>Single Model</td>
+                                    <td class="font-bold text-emerald-600"><i
+                                            class="fa-solid fa-trophy text-yellow-500 mr-1"></i> 2 Triệu Tokens</td>
+                                    <td>8K Tokens/Lượt</td>
+                                    <td>Vô địch tính toán văn bản dung lượng lớn</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-semibold text-slate-700">GPT-5.2</td>
+                                    <td>Single Model</td>
+                                    <td>400K Tokens</td>
+                                    <td class="font-bold text-blue-600"><i
+                                            class="fa-solid fa-trophy text-yellow-500 mr-1"></i> 128K Tokens</td>
+                                    <td>Suy luận sâu sắc, văn phong tuyệt hảo</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-semibold text-slate-700">Claude 4.6 (Opus)</td>
+                                    <td>Single Model</td>
+                                    <td>1M Tokens (Beta)</td>
+                                    <td class="font-bold text-blue-600"><i
+                                            class="fa-solid fa-trophy text-yellow-500 mr-1"></i> 128K Tokens</td>
+                                    <td>Code cực chuẩn, phân tích sâu chuyên ngành</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-semibold text-slate-700">Gemini 3.1 Pro</td>
+                                    <td>Single Model</td>
+                                    <td>1M Tokens (Std)</td>
+                                    <td>65K Tokens</td>
+                                    <td>Multimodal (Xử lý âm thanh/video mạnh mẽ)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- SECTION 3 -->
+                <section id="section-3" class="scroll-mt-24 mb-16">
+                    <h2>3. Hướng dẫn Setup Custom Instructions (Chỉ thị Tùy chỉnh)</h2>
+
+                    <!-- Intro explanation -->
+                    <div class="rounded-xl p-5 mb-8 text-sm"
+                        style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.08)); border: 1px solid rgba(99, 102, 241, 0.2);">
+                        <p class="mb-2" style="color: #a5b4fc;"><i class="fa-solid fa-circle-info mr-2"></i><strong>Tại
+                                sao phần này quan trọng?</strong></p>
+                        <p class="mb-0" style="color: #cbd5e1;">
+                            Grok 4.20 cho phép bạn thiết lập <strong style="color: #e0e7ff;">Custom
+                                Instructions</strong> - một bộ "luật chơi" cố định mà Grok sẽ <em>tự động tuân thủ</em>
+                            trong mọi cuộc hội thoại, giúp bạn không phải lặp lại yêu cầu mỗi lần chat. Đây là bước
+                            setup <strong style="color: #e0e7ff;">bắt buộc</strong> nếu muốn khai thác hết sức mạnh 4
+                            Agents.
+                        </p>
+                    </div>
+
+                    <h3>3.1. Cách Setup Custom Instructions (Từng bước)</h3>
+
+                    <!-- Step-by-step guide -->
+                    <div class="space-y-4 mb-8">
+                        <!-- Step 1 -->
+                        <div class="flex gap-4 items-start">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                                style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">1</div>
+                            <div>
+                                <p class="font-bold mb-1" style="color: #e2e8f0;">Mở Grok & tìm Projects</p>
+                                <p class="text-sm" style="color: #94a3b8;">Truy cập <a href="https://grok.com"
+                                        target="_blank" style="color: #818cf8; text-decoration: underline;">grok.com</a>
+                                    → Nhìn sidebar bên trái → Click vào <strong
+                                        style="color: #c7d2fe;">Projects</strong> (nằm giữa Imagine và History).</p>
+                            </div>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="flex gap-4 items-start">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                                style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">2</div>
+                            <div>
+                                <p class="font-bold mb-1" style="color: #e2e8f0;">Tạo Project mới</p>
+                                <p class="text-sm" style="color: #94a3b8;">Nếu chưa có Project → Click <strong
+                                        style="color: #c7d2fe;">New Project</strong> (hoặc nút <code>+</code>). Đặt tên
+                                    dễ nhớ, ví dụ: <code>"Grok 4.20 Multi-Agent"</code>.</p>
+                            </div>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="flex gap-4 items-start">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                                style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">3</div>
+                            <div>
+                                <p class="font-bold mb-1" style="color: #e2e8f0;">Mở phần Instructions</p>
+                                <p class="text-sm" style="color: #94a3b8;">Vào trong Project → Nhìn góc trên cùng hoặc
+                                    menu bên phải → Click <strong style="color: #c7d2fe;">Instructions</strong> (hoặc
+                                    Edit Instructions / Project Settings → Instructions).</p>
+                            </div>
+                        </div>
+                        <!-- Step 4 -->
+                        <div class="flex gap-4 items-start">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                                style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">4</div>
+                            <div>
+                                <p class="font-bold mb-1" style="color: #e2e8f0;">Paste nội dung & Save</p>
+                                <p class="text-sm" style="color: #94a3b8;">Copy nội dung ở <strong
+                                        style="color: #c7d2fe;">mục 3.3 bên dưới</strong> → Paste vào ô Instructions →
+                                    Nhấn <strong style="color: #c7d2fe;">Save</strong>. Mọi cuộc hội thoại trong Project
+                                    này sẽ tự động áp dụng bộ luật đó.</p>
+                            </div>
+                        </div>
+                        <!-- Step 5 -->
+                        <div class="flex gap-4 items-start">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                                style="background: linear-gradient(135deg, #ef4444, #f97316);">5</div>
+                            <div>
+                                <p class="font-bold mb-1" style="color: #e2e8f0;">Chọn Preferred Mode → Grok 4.20 (Beta)
+                                </p>
+                                <p class="text-sm" style="color: #94a3b8;">Ngay bên dưới ô Instructions, tìm mục <strong
+                                        style="color: #c7d2fe;">Preferred mode</strong> (mặc định là "Auto") → Click
+                                    dropdown → Chọn <strong style="color: #fca5a5;">Grok 4.20 (Beta) - 4
+                                        Agents</strong>. Đây là bước <strong style="color: #fca5a5;">bắt buộc</strong>
+                                    để kích hoạt hệ thống 4 Agents.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tip -->
+                    <div class="rounded-lg p-4 mb-10 text-sm"
+                        style="background: rgba(234, 179, 8, 0.08); border: 1px solid rgba(234, 179, 8, 0.2);">
+                        <p class="mb-0" style="color: #fde68a;"><i class="fa-solid fa-lightbulb mr-2"
+                                style="color: #fbbf24;"></i><strong style="color: #fbbf24;">Mẹo:</strong> Bạn có thể tạo
+                            nhiều Projects khác nhau (VD: "Viết Content", "Code Python", "Market Research") - mỗi
+                            Project có bộ Instructions riêng phù hợp với mục đích sử dụng.</p>
+                    </div>
+
+                    <h3>3.2. Bạn là ai? Xác định Persona (Chân dung)</h3>
+                    <p>Trước khi viết Instructions, hãy xác định <strong>bạn thuộc nhóm người dùng nào</strong> để chọn
+                        đúng chiến lược:</p>
+
+                    <table class="premium-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%">Persona (Chân dung)</th>
+                                <th>Pain Points (Nỗi đau)</th>
+                                <th>Giải pháp Grok 4.20</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Dev / Engineer (Lập trình viên)</strong></td>
+                                <td>Code hay lỗi ngầm, phi logic khi Build.</td>
+                                <td>Giao <strong>Benjamin</strong> check Logic/Memory Leaks.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Market Researcher (Nghiên cứu thị trường)</strong></td>
+                                <td>Số liệu cũ, hay bị địa phương hóa sai.</td>
+                                <td>Giao <strong>Harper</strong> cào insight phút chót từ mạng X.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Product Maker (Nhà tạo sản phẩm)</strong></td>
+                                <td>AI hay nịnh nọt chiều ý, thiếu góc nhìn dị biệt.</td>
+                                <td><strong>4 Agents</strong> tự cãi nhau phản biện chốt UX.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="mt-10">3.3. Mẫu Instructions sẵn sàng Copy-Paste</h3>
+                    <p>Dưới đây là 6 chiến lược cốt lõi. Bạn có thể tùy chỉnh từng phần, sau đó <strong>gộp cả 6
+                            lại</strong> và paste vào ô Instructions (xem bản gộp sẵn ở cuối mục):</p>
+
+                    <div class="space-y-4">
+                        <div class="rounded-xl p-5"
+                            style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(71, 85, 105, 0.4);">
+                            <div class="flex items-center gap-2 mb-3">
+                                <i class="fa-solid fa-user-gear" style="color: #818cf8;"></i>
+                                <strong style="color: #c7d2fe;">① Định hình Identity (Danh tính)</strong>
+                            </div>
+                            <p class="text-sm mb-2" style="color: #94a3b8;">Cho Grok biết bạn là ai, làm trong ngành
+                                nào, output mong muốn ra sao.</p>
+                            <code class="block text-sm rounded-lg p-4"
+                                style="background: #0f172a; color: #e2e8f0; border: 1px solid #334155; white-space: pre-wrap;">"Tôi là [nghề nghiệp] tại Việt Nam. Luôn trả lời bằng tiếng Việt, tông giọng chuyên nghiệp nhưng dễ hiểu. Output mặc định dạng Markdown. Không chào hỏi sáo rỗng."</code>
+                        </div>
+
+                        <div class="rounded-xl p-5"
+                            style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(71, 85, 105, 0.4);">
+                            <div class="flex items-center gap-2 mb-3">
+                                <i class="fa-solid fa-comments" style="color: #f472b6;"></i>
+                                <strong style="color: #fda4af;">② Ép Tranh Luận (Force Debate)</strong>
+                            </div>
+                            <p class="text-sm mb-2" style="color: #94a3b8;">Ép 4 Agents phản biện nhau thay vì đồng ý
+                                chiều user.</p>
+                            <code class="block text-sm rounded-lg p-4"
+                                style="background: #0f172a; color: #e2e8f0; border: 1px solid #334155; white-space: pre-wrap;">"Với mọi câu hỏi phức tạp, luôn đưa ra ít nhất 3 hướng giải quyết. Các luồng tư duy phải phản biện lẫn nhau trước khi đưa kết luận cuối cùng."</code>
+                        </div>
+
+                        <div class="rounded-xl p-5"
+                            style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(71, 85, 105, 0.4);">
+                            <div class="flex items-center gap-2 mb-3">
+                                <i class="fa-solid fa-people-arrows" style="color: #4ade80;"></i>
+                                <strong style="color: #86efac;">③ Delegation - Giao Khoán việc</strong>
+                            </div>
+                            <p class="text-sm mb-2" style="color: #94a3b8;">Đối xử với Grok như team 4 người thật, mỗi
+                                Agent một chuyên môn.</p>
+                            <code class="block text-sm rounded-lg p-4"
+                                style="background: #0f172a; color: #e2e8f0; border: 1px solid #334155; white-space: pre-wrap;">"Khi tôi đưa task phức tạp: Harper tìm dữ liệu mới nhất, Benjamin kiểm tra logic và tính toán, Lucas đề xuất góc nhìn sáng tạo, Grok tổng hợp kết luận cuối cùng."</code>
+                        </div>
+                        <!-- Card 4: Output Rules -->
+                        <div class="rounded-xl p-5"
+                            style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(71, 85, 105, 0.4);">
+                            <div class="flex items-center gap-2 mb-3">
+                                <i class="fa-solid fa-list-check" style="color: #38bdf8;"></i>
+                                <strong style="color: #7dd3fc;">④ Quy tắc Output (Đầu ra)</strong>
+                            </div>
+                            <p class="text-sm mb-2" style="color: #94a3b8;">Ép Grok tuân thủ format output chặt chẽ,
+                                tránh trả lời lan man.</p>
+                            <code class="block text-sm rounded-lg p-4"
+                                style="background: #0f172a; color: #e2e8f0; border: 1px solid #334155; white-space: pre-wrap;">Mọi câu trả lời phải đảm bảo:
+• Nêu rõ ngữ cảnh và vai trò trước khi trả lời.
+• Ràng buộc: Không dài dòng, cấm tiếng mượn Hán Việt, không mơ hồ.
+• Output: Định dạng Markdown/Table/Code rõ ràng.
+• Nếu cần, đưa 1-2 mẫu ngắn minh họa.</code>
+                        </div>
+                        <!-- Card 5: Debate & Verify -->
+                        <div class="rounded-xl p-5"
+                            style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(71, 85, 105, 0.4);">
+                            <div class="flex items-center gap-2 mb-3">
+                                <i class="fa-solid fa-gavel" style="color: #f87171;"></i>
+                                <strong style="color: #fca5a5;">⑤ Ép Debate & Verify (Bắt buộc)</strong>
+                            </div>
+                            <p class="text-sm mb-2" style="color: #94a3b8;">Ép Agents phản biện nhau + bắt buộc dùng
+                                tool kiểm chứng, không AI "bịa".</p>
+                            <code class="block text-sm rounded-lg p-4"
+                                style="background: #0f172a; color: #e2e8f0; border: 1px solid #334155; white-space: pre-wrap;">• Ép Debate: "Đưa ra ít nhất 3 hướng giải quyết. Các Agent phản biện đập bỏ ý tưởng của nhau trước khi tổng hợp kết luận cuối cùng."
+• Bắt ép dùng Tool: BẮT BUỘC dùng web_search (hoặc code_execution khi cần) để kiểm chứng 100% dữ liệu. Không bao giờ đưa thông tin chưa verify.</code>
+                        </div>
+                        <!-- Card 6: Operating Rules -->
+                        <div class="rounded-xl p-5"
+                            style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(71, 85, 105, 0.4);">
+                            <div class="flex items-center gap-2 mb-3">
+                                <i class="fa-solid fa-sitemap" style="color: #a78bfa;"></i>
+                                <strong style="color: #c4b5fd;">⑥ Quy tắc Vận hành chung</strong>
+                            </div>
+                            <p class="text-sm mb-2" style="color: #94a3b8;">Phân quyền rõ ràng cho từng Agent, tránh
+                                chồng chéo.</p>
+                            <code class="block text-sm rounded-lg p-4"
+                                style="background: #0f172a; color: #e2e8f0; border: 1px solid #334155; white-space: pre-wrap;">- Research/fact-check → Harper chủ trì.
+- Logic/code/toán → Benjamin chủ trì.
+- Sáng tạo/UX/concept → Lucas chủ trì.
+- Grok Leader tổng hợp, giải quyết xung đột và đưa câu trả lời cuối cùng.
+- Luôn hiển thị rõ tên Agent trong Thoughts và phản hồi cuối.
+
+Bắt đầu mọi tương tác bằng cách vận hành đúng team 4 Agents này.</code>
+                        </div>
+                    </div>
+
+                    <!-- Combined copy block -->
+                    <div class="mt-8 rounded-xl p-5"
+                        style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(59, 130, 246, 0.08)); border: 1px solid rgba(16, 185, 129, 0.3);">
+                        <div class="flex items-center gap-2 mb-3">
+                            <i class="fa-solid fa-copy" style="color: #34d399;"></i>
+                            <strong style="color: #6ee7b7;">Bản gộp sẵn sàng Copy-Paste vào Instructions:</strong>
+                        </div>
+                        <p class="text-xs mb-3" style="color: #94a3b8;">Copy toàn bộ nội dung trong khung bên dưới →
+                            Paste vào ô Instructions ở Project (xem hướng dẫn 3.1) → Nhấn Save.</p>
+                        <pre class="text-sm rounded-lg p-4 mb-0"
+                            style="background: #0f172a; color: #e2e8f0; border: 1px solid #334155; white-space: pre-wrap; font-family: 'Inter', sans-serif;">Tôi là [nghề nghiệp] tại Việt Nam. Luôn trả lời bằng tiếng Việt, tông giọng chuyên nghiệp nhưng dễ hiểu. Output mặc định dạng Markdown. Không chào hỏi sáo rỗng.
+
+Với mọi câu hỏi phức tạp, luôn đưa ra ít nhất 3 hướng giải quyết. Các luồng tư duy phải phản biện lẫn nhau trước khi đưa kết luận cuối cùng.
+
+Khi tôi đưa task phức tạp: Harper tìm dữ liệu mới nhất, Benjamin kiểm tra logic và tính toán, Lucas đề xuất góc nhìn sáng tạo, Grok tổng hợp kết luận cuối cùng.
+
+=== Quy tắc output ===
+Mọi câu trả lời phải đảm bảo:
+• Nêu rõ ngữ cảnh và vai trò trước khi trả lời.
+• Ràng buộc: Không dài dòng, cấm tiếng mượn Hán Việt, không mơ hồ.
+• Output: Định dạng Markdown/Table/Code rõ ràng.
+• Nếu cần, đưa 1-2 mẫu ngắn minh họa.
+
+=== Ép Debate & Verify (BẮT BUỘC) ===
+• Ép Debate: "Đưa ra ít nhất 3 hướng giải quyết. Các Agent phản biện đập bỏ ý tưởng của nhau trước khi tổng hợp kết luận cuối cùng."
+• Bắt ép dùng Tool: BẮT BUỘC dùng web_search (hoặc code_execution khi cần) để kiểm chứng 100% dữ liệu. Không bao giờ đưa thông tin chưa verify.
+
+=== Quy tắc vận hành chung ===
+- Research/fact-check → Harper chủ trì.
+- Logic/code/toán → Benjamin chủ trì.
+- Sáng tạo/UX/concept → Lucas chủ trì.
+- Grok Leader tổng hợp, giải quyết xung đột và đưa câu trả lời cuối cùng.
+- Luôn hiển thị rõ tên Agent trong Thoughts và phản hồi cuối (VD: Harper: … / Benjamin: …)
+
+Bắt đầu mọi tương tác bằng cách vận hành đúng team 4 Agents này.</pre>
+                    </div>
+                </section>
+
+
+                <!-- SECTION 4 -->
+                <section id="section-4" class="scroll-mt-24 mb-16">
+                    <h2>4. Thư viện Thực chiến (4-Agent Synergy)</h2>
+
+                    <!-- Clarification box -->
+                    <div class="rounded-xl p-5 mb-6"
+                        style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(139, 92, 246, 0.08)); border: 1px solid rgba(59, 130, 246, 0.3);">
+                        <div class="flex items-center gap-2 mb-3">
+                            <i class="fa-solid fa-circle-info" style="color: #60a5fa;"></i>
+                            <strong style="color: #93c5fd;">Section 3 vs Section 4 - Khác nhau ở đâu?</strong>
+                        </div>
+                        <div class="grid gap-4" style="grid-template-columns: 1fr auto 1fr;">
+                            <div class="rounded-lg p-3"
+                                style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3);">
+                                <strong class="block text-sm mb-1" style="color: #6ee7b7;">Section 3 -
+                                    Instructions</strong>
+                                <p class="text-xs mb-1" style="color: #94a3b8;">Paste vào <strong
+                                        style="color: #e2e8f0;">Project &rarr; Instructions</strong></p>
+                                <p class="text-xs mb-0" style="color: #64748b;">Setup <strong style="color: #94a3b8;">1
+                                        lần</strong>, tự động áp dụng cho mọi cuộc chat</p>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-2xl" style="color: #64748b;">&rarr;</span>
+                            </div>
+                            <div class="rounded-lg p-3"
+                                style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3);">
+                                <strong class="block text-sm mb-1" style="color: #93c5fd;">Section 4 - Prompt
+                                    mẫu</strong>
+                                <p class="text-xs mb-1" style="color: #94a3b8;">Gõ trực tiếp vào <strong
+                                        style="color: #e2e8f0;">ô chat</strong></p>
+                                <p class="text-xs mb-0" style="color: #64748b;">Dùng <strong style="color: #94a3b8;">mỗi
+                                        lần</strong> bạn cần ra lệnh cho 4 Agents</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>Sau khi đã setup Instructions (Section 3), bạn chỉ cần <strong>gõ prompt vào ô chat</strong> để
+                        kích hoạt 4 Agents. Dưới đây là 3 kịch bản mẫu - copy rồi paste thẳng vào chat:</p>
+
+                    <div class="grid gap-6 mt-6">
+                        <!-- Case 1 -->
+                        <div
+                            class="bg-white rounded-xl shadow-[0_4px_20px_-10px_rgba(0,0,0,0.1)] p-6 border border-slate-100 hover:border-blue-300 transition-colors">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span
+                                    class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">Case
+                                    1</span>
+                                <h3 class="m-0 text-lg">Phân tích Market Research</h3>
+                                <span class="ml-auto text-xs font-semibold px-2 py-1 rounded"
+                                    style="background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3);">
+                                    <i class="fa-solid fa-keyboard mr-1"></i>GÕ VÀO CHAT
+                                </span>
+                            </div>
+                            <code
+                                class="text-slate-600 block mt-2 whitespace-normal border-none bg-slate-50 p-4 rounded-lg">"Viết một báo cáo phân tích thị trường F&B VN Q2/2026. Harper lấy tin mới nhất trên X; Benjamin tính toán rủi ro tỷ giá; Lucas thiết kế cấu trúc báo cáo viral dễ đọc; Grok tổng hợp One-pager."</code>
+                        </div>
+
+                        <!-- Case 2 -->
+                        <div
+                            class="bg-white rounded-xl shadow-[0_4px_20px_-10px_rgba(0,0,0,0.1)] p-6 border border-slate-100 hover:border-blue-300 transition-colors">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span
+                                    class="bg-purple-100 text-purple-700 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">Case
+                                    2</span>
+                                <h3 class="m-0 text-lg">Code Refactoring Khắt Khe</h3>
+                                <span class="ml-auto text-xs font-semibold px-2 py-1 rounded"
+                                    style="background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3);">
+                                    <i class="fa-solid fa-keyboard mr-1"></i>GÕ VÀO CHAT
+                                </span>
+                            </div>
+                            <code
+                                class="text-slate-600 block mt-2 whitespace-normal border-none bg-slate-50 p-4 rounded-lg">"Review đoạn Code sau. Benjamin dò Memory Leaks; Harper check package docs hiện hành xem có Deprecated không; Lucas gắng bẻ luồng UX; Grok chốt mã sạch cuối cùng."</code>
+                        </div>
+
+                        <!-- Case 3 -->
+                        <div
+                            class="bg-white rounded-xl shadow-[0_4px_20px_-10px_rgba(0,0,0,0.1)] p-6 border border-slate-100 hover:border-blue-300 transition-colors">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span
+                                    class="bg-rose-100 text-rose-700 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">Case
+                                    3</span>
+                                <h3 class="m-0 text-lg">Xử lý Khủng Hoảng Truyền Thông (Crisis PR)</h3>
+                                <span class="ml-auto text-xs font-semibold px-2 py-1 rounded"
+                                    style="background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3);">
+                                    <i class="fa-solid fa-keyboard mr-1"></i>GÕ VÀO CHAT
+                                </span>
+                            </div>
+                            <code
+                                class="text-slate-600 block mt-2 whitespace-normal border-none bg-slate-50 p-4 rounded-lg">"Dập lửa phốt [X]. Harper đo lường giận dữ đang xả ra trên Mạng X; Benjamin tính hậu quả đền bù hợp đồng; Lucas viết 3 Tone xin lỗi. Grok chốt quy trình xử lý 24h."</code>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 5 -->
+                <section id="section-5" class="scroll-mt-24 mb-16">
+                    <h2>5. Top 5 "Thần Chú" Ứng dụng Nóng (Cheat Sheet)</h2>
+
+                    <div class="rounded-xl p-4 mb-6"
+                        style="background: rgba(251, 191, 36, 0.06); border: 1px solid rgba(251, 191, 36, 0.25);">
+                        <p class="text-sm mb-0" style="color: #fbbf24;">
+                            <i class="fa-solid fa-bolt mr-2"></i>
+                            Đây là 5 prompt "nhanh gọn" bạn <strong>gõ thẳng vào ô chat</strong> khi cần kích hoạt một
+                            chế độ đặc biệt. Không cần thêm vào Instructions - chỉ cần copy &amp; paste vào chat là
+                            xong.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white p-5 border rounded-xl shadow-sm border-slate-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <strong>Devil's Advocate (Người phản biện):</strong>
+                                <span class="text-xs font-semibold px-2 py-1 rounded"
+                                    style="background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3);">
+                                    <i class="fa-solid fa-keyboard mr-1"></i>GÕ VÀO CHAT
+                                </span>
+                            </div>
+                            <code
+                                class="block whitespace-normal border-none bg-slate-50 p-3 rounded-lg text-sm">"Tôi định làm dự án X. Hãy đóng vai kẻ thù, tìm mọi nếp gấp thị trường vùi dập và tiêu diệt ý kiến của tôi."</code>
+                        </div>
+                        <div class="bg-white p-5 border rounded-xl shadow-sm border-slate-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <strong>The Aggressive Reviewer (Nhà phê bình khắt khe):</strong>
+                                <span class="text-xs font-semibold px-2 py-1 rounded"
+                                    style="background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3);">
+                                    <i class="fa-solid fa-keyboard mr-1"></i>GÕ VÀO CHAT
+                                </span>
+                            </div>
+                            <code
+                                class="block whitespace-normal border-none bg-slate-50 p-3 rounded-lg text-sm">"Đóng vai sếp xéo xắt cực đoan. Chê tơi tả kịch bản này nhưng phải cho tôi 1 lời khuyên triệu đô."</code>
+                        </div>
+                        <div class="bg-white p-5 border rounded-xl shadow-sm border-slate-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <strong>The Localizer (Chuyên gia bản địa hóa):</strong>
+                                <span class="text-xs font-semibold px-2 py-1 rounded"
+                                    style="background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3);">
+                                    <i class="fa-solid fa-keyboard mr-1"></i>GÕ VÀO CHAT
+                                </span>
+                            </div>
+                            <code
+                                class="block whitespace-normal border-none bg-slate-50 p-3 rounded-lg text-sm">"Dịch đoạn Text này sang tiếng Việt 100% văn nói của dân công sở, cấm tuyệt đối Hán Việt sượng trân."</code>
+                        </div>
+                        <div class="bg-white p-5 border rounded-xl shadow-sm border-slate-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <strong>The Atomizer (Xử lý &amp; Phân rã Data Rác):</strong>
+                                <span class="text-xs font-semibold px-2 py-1 rounded"
+                                    style="background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3);">
+                                    <i class="fa-solid fa-keyboard mr-1"></i>GÕ VÀO CHAT
+                                </span>
+                            </div>
+                            <code
+                                class="block whitespace-normal border-none bg-slate-50 p-3 rounded-lg text-sm">"Lấy mớ rác data này, băm nát thành 3 ý chính, đánh giá PESTLE."</code>
+                        </div>
+                        <div class="bg-white p-5 border rounded-xl shadow-sm border-slate-200"
+                            style="border-color: rgba(251, 191, 36, 0.4) !important;">
+                            <div class="flex items-center justify-between mb-2">
+                                <strong>Hồi phục Ngữ cảnh (Rất Quan Trọng):</strong>
+                                <span class="text-xs font-semibold px-2 py-1 rounded"
+                                    style="background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3);">
+                                    <i class="fa-solid fa-triangle-exclamation mr-1"></i>QUAN TRỌNG
+                                </span>
+                            </div>
+                            <code
+                                class="block whitespace-normal border-none bg-slate-50 p-3 rounded-lg text-sm">"DỪNG LẠI! Tóm tắt lại mọi framework ta vừa thông qua nãy giờ thành Bảng để giữ trí nhớ không đi lan man."</code>
+                            <p class="text-xs mt-2 mb-0" style="color: #94a3b8;">
+                                <i class="fa-solid fa-lightbulb mr-1" style="color: #fbbf24;"></i>
+                                Dùng khi chat dài, Grok bắt đầu "quên" nội dung đầu cuộc hội thoại. Prompt này ép Grok
+                                tổng hợp lại toàn bộ ngữ cảnh.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 6 -->
+                <section id="section-6" class="scroll-mt-24 mb-16">
+                    <h2>6. Tối ưu Hóa &amp; Cạm bẫy Hành Vi (Optimization)</h2>
+
+                    <!-- Warning Alert -->
+                    <div class="danger-card rounded-2xl my-8 relative overflow-hidden"
+                        style="background: linear-gradient(135deg, #1e1b2e 0%, #2d1520 50%, #1e1b2e 100%); border: 1px solid rgba(239, 68, 68, 0.3); box-shadow: 0 0 40px rgba(239, 68, 68, 0.08), 0 4px 20px rgba(0,0,0,0.2);">
+                        <!-- Glow Effects -->
+                        <div class="absolute top-0 left-0 w-full h-1"
+                            style="background: linear-gradient(90deg, transparent, #ef4444, #f97316, #ef4444, transparent);">
+                        </div>
+                        <div class="absolute -top-20 -right-20 w-48 h-48 rounded-full pointer-events-none"
+                            style="background: radial-gradient(circle, rgba(239, 68, 68, 0.15), transparent 70%);">
+                        </div>
+                        <div class="absolute -bottom-20 -left-20 w-48 h-48 rounded-full pointer-events-none"
+                            style="background: radial-gradient(circle, rgba(249, 115, 22, 0.1), transparent 70%);">
+                        </div>
+
+                        <div class="relative z-10 p-6 md:p-8">
+                            <!-- Header -->
+                            <div class="flex items-center gap-4 mb-5">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
+                                    style="background: linear-gradient(135deg, #ef4444, #dc2626); box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);">
+                                    <i class="fa-solid fa-skull-crossbones text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-extrabold mt-0 mb-0 tracking-tight"
+                                        style="color: #fca5a5; letter-spacing: -0.02em;">
+                                        Bẫy Tử Huyệt: <span
+                                            style="background: linear-gradient(90deg, #f87171, #fb923c); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">"INPUT"
+                                            vs "OUTPUT"</span>
+                                    </h3>
+                                    <p class="text-xs mt-1 mb-0"
+                                        style="color: #a78bfa; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;">
+                                        Dữ liệu cập nhật 2026 · Sai lầm #1 người dùng mới</p>
+                                </div>
+                            </div>
+
+                            <!-- Description -->
+                            <p class="text-sm mb-5" style="color: #d4d4d8; line-height: 1.7;">
+                                Nhiều người dùng nhầm lẫn giữa <strong style="color: #fbbf24;">Sức Đọc (Input Context
+                                    Window)</strong> và <strong style="color: #fbbf24;">Sức Viết (Output Token
+                                    Limit)</strong>. Đây là 2 khái niệm hoàn toàn khác nhau:
+                            </p>
+
+                            <!-- Two-column Comparison -->
+                            <div class="grid md:grid-cols-2 gap-4 mb-5">
+                                <!-- Sức Đọc -->
+                                <div class="rounded-xl p-4"
+                                    style="background: rgba(34, 197, 94, 0.08); border: 1px solid rgba(34, 197, 94, 0.2);">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <i class="fa-solid fa-book-open" style="color: #4ade80;"></i>
+                                        <strong class="text-sm" style="color: #86efac;">Sức Đọc (Input)</strong>
+                                    </div>
+                                    <p class="text-2xl font-black mb-1" style="color: #4ade80; margin: 0;">2 Triệu
+                                        Tokens</p>
+                                    <p class="text-xs" style="color: #9ca3af; margin: 0; line-height: 1.5;">Ném nguyên
+                                        thư quán Code hay 100 báo cáo PDF vào - Grok "nuốt" được hết.</p>
+                                </div>
+                                <!-- Sức Viết -->
+                                <div class="rounded-xl p-4"
+                                    style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.2);">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <i class="fa-solid fa-pen-nib" style="color: #f87171;"></i>
+                                        <strong class="text-sm" style="color: #fca5a5;">Sức Viết (Output)</strong>
+                                    </div>
+                                    <p class="text-2xl font-black mb-1" style="color: #f87171; margin: 0;">~8K
+                                        Tokens/Lượt</p>
+                                    <p class="text-xs" style="color: #9ca3af; margin: 0; line-height: 1.5;">Grok KHÔNG
+                                        thể viết 1 tràng 2 triệu token. Kể cả GPT-5.2 cũng chỉ xuất 128K.</p>
+                                </div>
+                            </div>
+
+                            <!-- Solution -->
+                            <div class="rounded-xl p-4"
+                                style="background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.2);">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span style="font-size: 1.1rem;">🚀</span>
+                                    <strong class="text-sm" style="color: #a5b4fc;">Giải pháp: Agentic Workflow</strong>
+                                </div>
+                                <p class="text-sm" style="color: #c4b5fd; margin: 0; line-height: 1.6;">
+                                    Muốn làm báo cáo hay sinh code <strong style="color: #e0e7ff;">SIÊU DÀI</strong>,
+                                    BẮT BUỘC bạn phải <strong style="color: #e0e7ff;">Chia nhỏ</strong>. Yêu cầu làm Mục
+                                    lục → Review → rồi xuất từng Module/Chương một.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Tips tối ưu hiệu suất cuối cùng</h3>
+                    <ul>
+                        <li><strong>Chống Token Waste:</strong> Chèn thêm lệnh
+                            <code>[Bỏ qua câu chào hỏi sáo rỗng. Trả kết quả thẳng vào file Markdown]</code>.
+                        </li>
+                        <li><strong>Dành cho siêu tác vụ:</strong> Ranh giới cuối cùng của Grok nằm ở gói
+                            <strong>SuperGrok Heavy ($300/tháng)</strong>. Nó sẽ triệu hồi 16 Agents chạy
+                            multi-processing giả lập giải pháp lượng tử/toán học chuyên sâu. Tuy nhiên nó đắt đỏ và
+                            không cần cho nhu cầu hàng ngày.
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Footer Callout -->
+                <div class="mt-16 text-center border-t border-slate-200 pt-10 pb-6">
+                    <div
+                        class="inline-flex items-center justify-center space-x-2 text-xl font-bold text-slate-400 mb-4">
+                        <i class="fa-solid fa-rocket"></i>
+                        <span>End of Document. Grok Hard, Build Better!</span>
+                    </div>
+                </div>
+
+            </article>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-grok-dark py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
+            <div class="text-white font-bold text-xl tracking-tight mb-6">
+                Grok 4.20 <span class="text-blue-500">Beta</span>
+            </div>
+
+            <a href="https://www.facebook.com/dotanminh" target="_blank" rel="noopener noreferrer"
+                class="group flex flex-col items-center gap-3 cursor-pointer">
+                <span class="text-slate-400 text-sm">Compiled & Designed with ❤️ by</span>
+                <div
+                    class="flex items-center gap-3 px-6 py-3 rounded-2xl bg-slate-800/50 border border-slate-700 hover:border-blue-500 transition-all hover:bg-slate-800">
+                    <img src="https://ui-avatars.com/api/?name=Minh+Do&background=2563eb&color=fff&rounded=true"
+                        alt="Minh Đỗ Avatar"
+                        class="w-8 h-8 rounded-full ring-2 ring-slate-800 group-hover:ring-blue-500 transition-all">
+                    <span class="text-white font-semibold text-lg group-hover:text-blue-400 transition-colors">Minh
+                        Đỗ</span>
+                    <i
+                        class="fa-brands fa-facebook text-blue-500 text-xl group-hover:scale-110 transition-transform"></i>
+                </div>
+            </a>
+
+            <p class="mt-8 text-slate-400 text-sm text-center">
+                © 2026 Ultimate Mastery Guide Series.<br />
+                All data updated as of March 2026.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JS for Active Nav Link -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Dark Mode Toggle Script -->
+    <script>
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('darkMode', isDark);
+            // Update toggle icon
+            const knob = document.querySelector('.dark-toggle-knob');
+            if (knob) knob.textContent = isDark ? '☀️' : '🌙';
+        }
+        // Set correct icon on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const knob = document.querySelector('.dark-toggle-knob');
+            if (knob) knob.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
+        });
+    </script>
+</body>
+
+</html>
